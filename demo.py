@@ -84,11 +84,11 @@ for path, prediction in tqdm.tqdm(zip(img_paths, img_predictions), desc='Save im
             color = tuple(cmap_rgb[int(cls_pred) % len(cmap_rgb)])
 
             # bounding box 그리기
-            draw.rectangle(((x1, y1), (x2, y2)), outline=color, width=2)
+            draw.rectangle(((x1, y1), (x2, y2)), outline=color, width=3)
 
             # label 그리기
             text = '{} {:.1f}'.format(class_names[int(cls_pred)], obj_conf.item() * 100)
-            font = ImageFont.truetype('calibri.ttf', size=12)
+            font = ImageFont.truetype('calibri.ttf', size=16)
             text_width, text_height = font.getsize(text)
             draw.rectangle(((x1, y1), (x1 + text_width, y1 + text_height)), fill=color)
             draw.text((x1, y1), text, fill=(0, 0, 0), font=font)
